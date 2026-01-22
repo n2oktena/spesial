@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day - Lala</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-soft: #F8E1E7;
+            --pink-medium: #E8A0B5;
+            --pink-deep: #D4789C;
+            --blue-soft: #E8F4F8;
+            --blue-medium: #A8D4E6;
+            --blue-deep: #7BB8D0;
+            --text-dark: #4A4A5A;
+            --text-light: #7A7A8A;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--blue-soft) 50%, var(--pink-soft) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.15;
+            animation: floatGentle 20s ease-in-out infinite;
+        }
+
+        .floating-element.heart {
+            font-size: 24px;
+        }
+
+        .floating-element.circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium));
+        }
+
+        .floating-element.small-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--pink-medium);
+        }
+
+        @keyframes floatGentle {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) translateX(15px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-15px) translateX(-10px) rotate(-3deg);
+            }
+            75% {
+                transform: translateY(-40px) translateX(20px) rotate(8deg);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.5); }
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .valentine-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 
+                0 25px 80px rgba(212, 120, 156, 0.15),
+                0 10px 40px rgba(123, 184, 208, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: cardAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .valentine-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink-medium), var(--blue-medium), var(--pink-medium));
+            border-radius: 32px 32px 0 0;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .header-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--pink-deep), var(--blue-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .photo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium));
+            box-shadow: 0 15px 40px rgba(212, 120, 156, 0.25);
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+        }
+
+        .photo-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium));
+            opacity: 0.2;
+            filter: blur(20px);
+            z-index: -1;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .recipient-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .divider-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--pink-medium), transparent);
+        }
+
+        .divider-icon {
+            color: var(--pink-medium);
+            font-size: 12px;
+        }
+
+        .message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-style: italic;
+            padding: 0 10px;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .date {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .spotify-container {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 120, 156, 0.15);
+        }
+
+        .spotify-label {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .spotify-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .memories-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium));
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: var(--white);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .memories-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 25px rgba(212, 120, 156, 0.35);
+        }
+
+        .memories-btn-icon {
+            font-size: 16px;
+        }
+
+        .love-signature {
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Memories Section */
+        .memories-section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .memories-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .memories-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--pink-deep), var(--blue-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .memories-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 120, 156, 0.2);
+        }
+
+        .back-to-top:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .memories-grid {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .memory-item {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: memoryAppear 0.8s ease forwards;
+        }
+
+        @keyframes memoryAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .memory-photo-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(212, 120, 156, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .memory-photo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                135deg,
+                rgba(232, 160, 181, 0.6),
+                rgba(168, 212, 230, 0.6),
+                rgba(232, 160, 181, 0.6)
+            );
+            border-radius: 22px;
+            z-index: -1;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        .memory-photo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                transparent 60%,
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                filter: blur(8px);
+            }
+            50% {
+                opacity: 0.8;
+                filter: blur(12px);
+            }
+        }
+
+        .memory-photo {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-item:hover .memory-photo {
+            transform: scale(1.02);
+        }
+
+        .memory-caption {
+            margin-top: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .memory-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.6;
+            position: relative;
+            display: inline-block;
+        }
+
+        .memory-text::before {
+            content: '"';
+            font-size: 40px;
+            color: var(--pink-medium);
+            position: absolute;
+            left: -20px;
+            top: -10px;
+            opacity: 0.5;
+        }
+
+        .end-message {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        .end-heart {
+            font-size: 40px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .end-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .valentine-card {
+                padding: 40px 25px;
+                border-radius: 24px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .photo-frame {
+                width: 130px;
+                height: 130px;
+            }
+
+            .recipient-name {
+                font-size: 34px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+
+            .memories-title {
+                font-size: 32px;
+            }
+
+            .memory-text {
+                font-size: 18px;
+            }
+
+            .memory-text::before {
+                font-size: 30px;
+                left: -15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-layer" id="backgroundLayer"></div>
+
+    <section class="hero-section" id="home">
+        <div class="main-container">
+            <div class="valentine-card">
+                <p class="header-text">With All My Love</p>
+                <h1 class="title">Happy Valentine's Day</h1>
+                
+                <div class="photo-container">
+                    <div class="photo-glow"></div>
+                    <div class="photo-frame">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face" alt="Lala" class="photo">
+                    </div>
+                </div>
+
+                <h2 class="recipient-name">Lala</h2>
+
+                <div class="divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">&#10084;</span>
+                    <span class="divider-line"></span>
+                </div>
+
+                <p class="message">
+                    Setiap hari bersamamu terasa seperti mimpi yang indah. Kamu adalah alasan di balik senyumku, cahaya dalam gelapku, dan kebahagiaan dalam setiap langkahku. Terima kasih telah menjadi bagian terindah dalam hidupku. Aku mencintaimu lebih dari kata-kata bisa ungkapkan.
+                </p>
+
+                <div class="footer">
+                    <p class="date">14 Februari 2026</p>
+                    
+                    <div class="button-group">
+                        <div class="spotify-container">
+                            <p class="spotify-label">
+                                <svg class="spotify-icon" viewBox="0 0 24 24" fill="#1DB954">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                                Putar Lagu
+                            </p>
+                            <iframe 
+                                style="border-radius:12px" 
+                                src="https://open.spotify.com/embed/track/5DqSZFvWvSWg5eyCDi0CuW?utm_source=generator&theme=0" 
+                                width="100%" 
+                                height="80" 
+                                frameBorder="0" 
+                                allowfullscreen="" 
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+
+                        <a href="#memories" class="memories-btn">
+                            <span class="memories-btn-icon">&#128247;</span>
+                            <span>Lihat Kenangan</span>
+                        </a>
+                    </div>
+
+                    <p class="love-signature">Made with love</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="memories-section" id="memories">
+        <div class="memories-header">
+            <h2 class="memories-title">Kenangan Kita</h2>
+            <p class="memories-subtitle">Momen-momen indah yang tak terlupakan</p>
+            <a href="#home" class="back-to-top">
+                <span>&#8593;</span> Kembali ke Atas
+            </a>
+        </div>
+
+        <div class="memories-grid" id="memoriesGrid">
+            <!-- FOTO KENANGAN - Tambahkan foto baru di bawah ini -->
+            
+            <div class="memory-item" style="animation-delay: 0.1s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&h=750&fit=crop" alt="Kenangan 1" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat pertama kali kita bertemu, hatiku langsung tahu kamu adalah segalanya.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.2s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=750&fit=crop" alt="Kenangan 2" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat kita berjalan bersama di bawah langit senja yang indah.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.3s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&h=750&fit=crop" alt="Kenangan 3" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat tawa kita mengisi setiap sudut ruangan dengan kebahagiaan.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.4s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=750&fit=crop" alt="Kenangan 4" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat kita berbagi cerita hingga lupa waktu berlalu.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.5s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=750&fit=crop" alt="Kenangan 5" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat pelukan hangatmu menghapus semua lelahku.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.6s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&h=750&fit=crop" alt="Kenangan 6" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat kita menikmati secangkir kopi bersama di pagi yang tenang.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.7s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=600&h=750&fit=crop" alt="Kenangan 7" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat tatapan matamu membuatku jatuh cinta lebih dalam.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.8s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?w=600&h=750&fit=crop" alt="Kenangan 8" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat kita berjanji untuk selalu bersama dalam suka dan duka.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 0.9s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?w=600&h=750&fit=crop" alt="Kenangan 9" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat genggaman tanganmu memberiku kekuatan untuk terus maju.</p>
+                </div>
+            </div>
+
+            <div class="memory-item" style="animation-delay: 1s;">
+                <div class="memory-photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=600&h=750&fit=crop" alt="Kenangan 10" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat setiap momen bersamamu adalah kenangan terindah dalam hidupku.</p>
+                </div>
+            </div>
+
+            <!-- TAMBAHKAN FOTO BARU DI SINI -->
+            <!-- Template untuk menambah foto baru:
+            <div class="memory-item">
+                <div class="memory-photo-wrapper">
+                    <img src="URL_FOTO_ANDA" alt="Kenangan" class="memory-photo">
+                </div>
+                <div class="memory-caption">
+                    <p class="memory-text">Ingatlah saat ...</p>
+                </div>
+            </div>
+            -->
+
+        </div>
+
+        <div class="end-message">
+            <span class="end-heart">&#10084;</span>
+            <p class="end-text">Selamanya bersamamu, Lala</p>
+        </div>
+    </section>
+
+    <script>
+        function createBackgroundElements() {
+            const layer = document.getElementById('backgroundLayer');
+            
+            const hearts = [
+                { left: '5%', top: '10%', delay: '0s', size: '20px' },
+                { left: '90%', top: '15%', delay: '2s', size: '16px' },
+                { left: '15%', top: '80%', delay: '4s', size: '22px' },
+                { left: '85%', top: '75%', delay: '1s', size: '18px' },
+                { left: '50%', top: '5%', delay: '3s', size: '14px' },
+                { left: '70%', top: '90%', delay: '5s', size: '20px' },
+            ];
+
+            hearts.forEach((h, i) => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-element heart';
+                heart.innerHTML = '&#10084;';
+                heart.style.left = h.left;
+                heart.style.top = h.top;
+                heart.style.fontSize = h.size;
+                heart.style.animationDelay = h.delay;
+                heart.style.animationDuration = (18 + i * 2) + 's';
+                layer.appendChild(heart);
+            });
+
+            const circles = [
+                { left: '10%', top: '30%', delay: '1s' },
+                { left: '80%', top: '40%', delay: '3s' },
+                { left: '20%', top: '60%', delay: '5s' },
+                { left: '75%', top: '20%', delay: '2s' },
+            ];
+
+            circles.forEach((c, i) => {
+                const circle = document.createElement('div');
+                circle.className = 'floating-element circle';
+                circle.style.left = c.left;
+                circle.style.top = c.top;
+                circle.style.animationDelay = c.delay;
+                circle.style.animationDuration = (22 + i * 3) + 's';
+                layer.appendChild(circle);
+            });
+
+            for (let i = 0; i < 8; i++) {
+                const smallCircle = document.createElement('div');
+                smallCircle.className = 'floating-element small-circle';
+                smallCircle.style.left = (Math.random() * 90 + 5) + '%';
+                smallCircle.style.top = (Math.random() * 90 + 5) + '%';
+                smallCircle.style.animationDelay = (Math.random() * 5) + 's';
+                smallCircle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                smallCircle.style.opacity = 0.08 + Math.random() * 0.08;
+                layer.appendChild(smallCircle);
+            }
+
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = (Math.random() * 100) + '%';
+                sparkle.style.top = (Math.random() * 100) + '%';
+                sparkle.style.animationDelay = (Math.random() * 3) + 's';
+                sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                layer.appendChild(sparkle);
+            }
+        }
+
+        // Intersection Observer untuk animasi scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.memory-item').forEach(item => {
+            item.style.animationPlayState = 'paused';
+            observer.observe(item);
+        });
+
+        createBackgroundElements();
+    </script>
+</body>
+</html>
